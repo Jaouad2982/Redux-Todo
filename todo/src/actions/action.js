@@ -13,3 +13,10 @@ export const toggleInput = id =>{
 
     }
 }
+
+
+export const clearAllTasks = ()=>{
+    return {
+        type : "CLEAR_TASKS"
+    }
+}

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import './App.css';
-import {addinput,toggleInput} from "./actions/action"
+import IndividualTodo from "./components/IndividualTodo"
+import {addinput} from "./actions/action"
+
+
 class App extends Component {
   state = {
     inputMember :  "",
@@ -29,9 +32,11 @@ class App extends Component {
     })
   }
 
+
   render() {
     console.log(this.props.todoList)
     console.log(this.state.error)
+ 
     return (
       <div className="App">
         <header className="App-header">
@@ -41,8 +46,8 @@ class App extends Component {
                  name="inputMember"
                 onChange={this.changeHandler} />
                 <button onClick={this.addMember}> Add a value </button>
-            {this.props.todoList.map(todo=><p onClick={()=>this.props.toggleInput(todo.id)} key={todo.id}>{todo.task}</p>)}
-           
+                {this.props.todoList.map((todo)=>
+                  <IndividualTodo key={todo.id} todo={todo}/>)}
         </header>
       </div>
     );
@@ -57,5 +62,7 @@ const mapStateToProps = state=>{
 
 
 export default connect(mapStateToProps,{
-  addinput,toggleInput
+  addinput
 })(App);
+
+

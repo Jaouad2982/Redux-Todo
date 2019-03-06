@@ -3,11 +3,13 @@ const initialState = {
     todo : [
         {
         task : "walk the dog",
-        completed: false
+        completed: false,
+        id : Date.now()
     },
     {
         task : "read your books",
-        completed: false
+        completed: false,
+        id: Date.now()+1
     }
 ]
 }
@@ -28,20 +30,19 @@ const reducer = (state = initialState,action)=>{
                 todo : [...state.todo,newTodo]
                 }
         case "TOGGLE_INPUT":
-        return{
-            ...state,
-            todo : state.todo.map(todo=>{
-                if(todo.id === action.payload){
+                    const myTodo = state.todo.map(todo=>{
+                        if(todo.id === action.payload){
+                            return { ...todo,completed : !todo.completed}
+                        }
+                        return todo;
+                    })
+                    return {...state,todo : myTodo}
+        case "CLEAR_TASKS" :
                     return {
-                        ...todo,
-                        todo : !todo.completed
+                        todo : []
                     }
-                }
-                return todo
-            })
-        }
-        default :
-                return state
+        default :  return state
+                  
        
     }
         
