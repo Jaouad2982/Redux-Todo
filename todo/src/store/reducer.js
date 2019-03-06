@@ -37,9 +37,9 @@ const reducer = (state = initialState,action)=>{
                         return todo;
                     })
                     return {...state,todo : myTodo}
-        case "CLEAR_TASKS" :
+        case "CLEAR_TASK" :
                     return {
-                        todo : []
+                        
                     }
         default :  return state
                   

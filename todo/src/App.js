@@ -39,16 +39,20 @@ class App extends Component {
  
     return (
       <div className="App">
-        <header className="App-header">
+        
           <h3> A title </h3>
           <input type="text" 
                   value={this.state.inputMember}
                  name="inputMember"
                 onChange={this.changeHandler} />
                 <button onClick={this.addMember}> Add a value </button>
-                {this.props.todoList.map((todo)=>
-                  <IndividualTodo key={todo.id} todo={todo}/>)}
-        </header>
+  
+            <div>
+                      {this.props.todoList.map((todo)=>
+                        <IndividualTodo 
+                        key={todo.id} todo={todo}
+                        />)}
+              </div>
       </div>
     );
   }
