@@ -27,7 +27,19 @@ const reducer = (state = initialState,action)=>{
                     ...state,
                 todo : [...state.todo,newTodo]
                 }
-
+        case "TOGGLE_INPUT":
+        return{
+            ...state,
+            todo : state.todo.map(todo=>{
+                if(todo.id === action.payload){
+                    return {
+                        ...todo,
+                        todo : !todo.completed
+                    }
+                }
+                return todo
+            })
+        }
         default :
                 return state
        

@@ -5,3 +5,11 @@ export const addinput = (input)=>{
     }
 }
 
+
+export const toggleInput = id =>{
+    return {
+        type : "TOGGLE_INPUT",
+        payload : id
+
+    }
+}
