@@ -41,7 +41,7 @@ class App extends Component {
                  name="inputMember"
                 onChange={this.changeHandler} />
                 <button onClick={this.addMember}> Add a value </button>
-            {this.props.todoList.map(todo=><p onClick={this.props.toggleInput} key={todo.id}>{todo.task}</p>)}
+            {this.props.todoList.map(todo=><p onClick={()=>this.props.toggleInput(todo.id)} key={todo.id}>{todo.task}</p>)}
            
         </header>
       </div>
@@ -57,5 +57,5 @@ const mapStateToProps = state=>{
 
 
 export default connect(mapStateToProps,{
-  addinput 
+  addinput,toggleInput
 })(App);
